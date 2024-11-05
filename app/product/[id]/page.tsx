@@ -1,4 +1,4 @@
-import { Button } from "components/ui/button"
+import { Button } from "./components/ui/button"
 import { Star, Truck } from 'lucide-react'
 
 export default function ProductPage({ params }: { params: { id: string } }) {
