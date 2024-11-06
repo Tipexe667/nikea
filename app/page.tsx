@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from "components/ui/button"
-import { Input } from "components/ui/input"
+import { Button } from "@/components/ui/button.tsx"
+import { Input } from "@/components/ui/input.tsx"
 import { Search, ShoppingCart, User } from 'lucide-react'
 
 export default function Home() {
