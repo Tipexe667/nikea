@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Button } from "components/ui/button"
+import { Button } from "@/components/ui/button.tsx"
 
 export default function CategoryPage({ params }: { params: { slug: string } }) {
   const products = [
