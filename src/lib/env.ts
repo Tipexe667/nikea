@@ -1,5 +1,11 @@
-DATABASE_URL= "mongodb+srv://hubaulouen:abT6TlQAItntJS5u@cluster0.md8ve.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0"
-GOOGLE_CLIENT_ID= "630039385758-uhb7jup2uvisem0v0uu3a903jgun36bn.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET= "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"
-NEXTAUTH_SECRET= "68414aa030d5cb6e524f07ee4b611c47"
-NEXTAUTH_URL= "http://localhost:3000"
+const env = {
+  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET as string,
+  NEXTAUTH_URL: process.env.NEXTAUTH_URL as string,
+  DATABASE_URL: process.env.DATABASE_URL as string,
+  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID as string,
+  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET as string,
+  GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID as string,
+  GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET as string,
+};
+
+export default env;
