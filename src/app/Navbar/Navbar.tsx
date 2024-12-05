@@ -7,6 +7,7 @@ import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 import ShoppingCartButton from "./ShoppingCartButton";
 import UserMenuButton from "./UserMenuButton";
+import ThemeButton from "@/components/ThemeButton";
 
 async function searchProducts(formData: FormData) {
   "use server";
@@ -23,12 +24,12 @@ export default async function Navbar() {
   const cart = await getCart();
 
   return (
-    <div className="bg-base-100">
-      <div className="navbar m-auto max-w-7xl flex-col gap-2 sm:flex-row">
+    <div className="bg-gray-400 dark:bg-gray-950">
+      <div className="navbar max-w-7xl m-auto flex-col sm:flex-row gap-2">
         <div className="flex-1">
-          <Link href="/" className="btn-ghost btn text-xl normal-case">
+          <Link href="/" className="btn btn-ghost text-xl normal-case">
             <Image src={logo} height={40} width={40} alt="Flowmazon logo" />
-            Flowmazon
+            Nikea
           </Link>
         </div>
         <div className="flex-none gap-2">
@@ -37,11 +38,12 @@ export default async function Navbar() {
               <input
                 name="searchQuery"
                 placeholder="Search"
-                className="input-bordered input w-full min-w-[100px]"
+                className="input input-bordered w-full min-w-[100px]"
               />
             </div>
           </form>
           <ShoppingCartButton cart={cart} />
+          <ThemeButton />
           <UserMenuButton session={session} />
         </div>
       </div>

@@ -2,13 +2,15 @@
 const nextConfig = {
   images: {
     remotePatterns: [
-      { hostname: "images.unsplash.com" },
-      { hostname: "lh3.googleusercontent.com" },
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
     ],
   },
   experimental: {
     serverActions: true,
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

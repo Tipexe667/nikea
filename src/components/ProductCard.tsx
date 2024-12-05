@@ -15,11 +15,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link
       href={"/products/" + product.id}
-      className="card w-full bg-base-100 transition-shadow hover:shadow-xl"
+      className="card w-full bg-base-100 dark:bg-blue-950/80 transition-shadow hover:shadow-xl"
     >
       <figure>
         <Image
-          src={product.imageUrl}
+          src={product.imageUrl_}
           alt={product.name}
           width={800}
           height={400}

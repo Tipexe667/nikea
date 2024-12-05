@@ -1,11 +1,10 @@
-import PriceTag from "@/components/PriceTag";
-import { prisma } from "@/lib/db/prisma";
-import { Metadata } from "next";
-import Image from "next/image";
+import prisma from "@/lib/db/prisma";
 import { notFound } from "next/navigation";
 import { cache } from "react";
+import Image from "next/image";
+import { formatPrice } from "@/lib/format";
 import AddToCartButton from "./AddToCartButton";
-import { incrementProductQuantity } from "./actions";
+import { Metadata } from "next";
 
 interface ProductPageProps {
   params: {
@@ -14,7 +13,7 @@ interface ProductPageProps {
 }
 
 const getProduct = cache(async (id: string) => {
-  const product = await prisma.product.findUnique({ where: { id } });
+  const product = await prisma.products.findUnique({ where: { id } });
   if (!product) notFound();
   return product;
 });
@@ -25,10 +24,10 @@ export async function generateMetadata({
   const product = await getProduct(id);
 
   return {
-    title: product.name + " - Flowmazon",
+    title: product.name + " - Nikea",
     description: product.description,
     openGraph: {
-      images: [{ url: product.imageUrl }],
+      images: [{ url: product.imageUrl_ }],
     },
   };
 }
@@ -39,9 +38,9 @@ export default async function ProductPage({
   const product = await getProduct(id);
 
   return (
-    <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
+    <div className="flex flex-col lg:flex-row gap-4 lg:items-center">
       <Image
-        src={product.imageUrl}
+        src={product.imageUrl_}
         alt={product.name}
         width={500}
         height={500}
@@ -51,12 +50,9 @@ export default async function ProductPage({
 
       <div>
         <h1 className="text-5xl font-bold">{product.name}</h1>
-        <PriceTag price={product.price} className="mt-4" />
-        <p className="py-6">{product.description}</p>
-        <AddToCartButton
-          productId={product.id}
-          incrementProductQuantity={incrementProductQuantity}
-        />
+        <p className="text-2xl text-gray-700 py-4">{formatPrice(product.price)}</p>
+        <p className="text-lg py-4">{product.description}</p>
+        <AddToCartButton productId={product.id} />
       </div>
     </div>
   );
