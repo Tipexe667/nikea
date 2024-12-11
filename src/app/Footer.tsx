@@ -1,3 +1,5 @@
+import Contact from "./contact/page"
+
 export default function Footer() {
   return (
     <footer className="bg-neutral p-10 text-neutral-content">
@@ -11,8 +13,8 @@ export default function Footer() {
         </div>
         <div>
           <span className="footer-title">Company</span>
-          <a className="link-hover link">About us</a>
-          <a className="link-hover link">Contact</a>
+          <a className="link-hover link" href="https://www.ikea.com/fr/fr/">About us</a>
+          <a href="/contact" className="link" >Contact</a>
           <a className="link-hover link">Jobs</a>
           <a className="link-hover link">Press kit</a>
         </div>
